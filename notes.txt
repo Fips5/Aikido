@@ -1,2 +1,3 @@
+cd C:\Users\David\Desktop\Aikido\aikido
 python manage.py runserver - to run the server
 return render(request, 'template.html', context)

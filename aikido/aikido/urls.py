@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from django.conf import settings
+from django.conf.urls.static import static
+from settings import MEDIA_ROOT
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),  # Include the 'main' app's URLs
-]
+]+ static(settings.MEDIS_URL, document_root = settings.MEDIA_ROOT )
