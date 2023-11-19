@@ -1,9 +1,9 @@
 # main/urls.py
-from . import views
 from django.urls import path
-from . import views
+from .views import home, download
 
 urlpatterns = [
-    # Add the URL pattern for the home view here
-    path('', views.home, name='home'),
+    path('', home, name='home'),
+    path('download/<path:file_path>/', download, name='download'),
 ]
+
