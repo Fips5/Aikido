@@ -333,6 +333,12 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     </div>
     
     <!-- Testimonials -->
+    <h2>Form Downloads</h1>
+      <ul>
+          {% for file in files %}
+              <li><a href="{% url 'download' file.file_name %}">{{ file.file_name }}</a></li>
+          {% endfor %}
+      </ul>
     <h3 class="padding-24 text-light-grey">Sensei</h3>  
     <img src="sensei.png" alt="Avatar" class="left circle margin-right" style="width:80px">
     <p><span class="large margin-right">Sensei 1</span> centura neagra etc..</p>

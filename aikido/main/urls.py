@@ -1,4 +1,5 @@
 # main/urls.py
+from . import views
 from django.urls import path
 from . import views
 
