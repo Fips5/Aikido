@@ -3,12 +3,12 @@
 <html lang="en">
 <head>
     <title>Aikido</title>
-    <link rel="shortcut icon" href="{% static 'myapp/logosky.png' %}">
+    <link rel="shortcut icon" href="{% static 'logosky.png' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <style>
         /* Add custom styles here */
         body {
@@ -17,7 +17,7 @@
         }
 
         nav {
-            background-color: #007bff; /* Blue navigation bar */
+            background: linear-gradient(to right, blue 33%, yellow 33% 66%, red 66%);
             color: #fff; /* White text for navigation links */
             padding: 1rem;
         }
@@ -64,7 +64,42 @@
             height: auto;
         }
 
-        /* Add more styles as needed */
+        .container {
+            border: 2px solid #ccc;
+            background-color: FBF6FF;
+            border-radius: 10px;
+            padding: 16px;
+            margin: 16px 0
+          }
+          
+          .container::after {
+            content: "";
+            clear: both;
+            display: table;
+          }
+          
+          .container img {
+            float: left;
+            margin-right: 20px;
+            border-radius: 50%;
+          }
+          
+          .container span {
+            font-size: 20px;
+            margin-right: 15px;
+          }
+          
+          @media (max-width: 500px) {
+            .container {
+                text-align: center;
+            }
+            .container img {
+                border: 2px solid #ccc;
+                margin: auto;
+                float: none;
+                display: block;
+            }
+          }
     </style>
 </head>
 <body>
@@ -75,9 +110,7 @@
 
 <div>
     <header>
-        <h1>Invata Aikido</h1>
-        <p>baitaie si altele.</p>
-        <img src="{% static 'myapp/img1.png' %}" alt="boy">
+        <img src="{% static 'kidskarate.jpg' %}" alt="boy">
     </header>
 
     <div>
@@ -87,30 +120,47 @@
     </div>
 
     <!-- Senseis or Form Downloads go here -->
-    <h2>Form Downloads</h2>
+    <h2>Inscriere</h2>
     <ul>
         {% for file in files %}
             <li><a href="{% url 'download' file.file.name %}">{{ file.file_name }}</a></li>
         {% endfor %}
     </ul>
 
-    <h3>Sensei</h3>
-    <img src="{% static 'myapp/sensei.png' %}" alt="Avatar" style="width:80px">
-    <p><span>Sensei 1</span> centura neagra etc..</p>
-    <p>Cuvinte de la senseiul respectiv, o descriere, ceva</p>
+    <h2>Instructori:</h2>
 
-    <img src="{% static 'myapp/sensei.png' %}" alt="Avatar" style="width:80px">
-    <p><span>Sensei 1</span> centura neagra etc..</p>
-    <p>Cuvinte de la senseiul respectiv, o descriere, ceva</p>
+    <div class="container">
+        <img src="{% static 'sef.jpg' %}" alt="Avatar" style="width:90px">
+        <p><span>Sensei 1</span> centura neagr ceva</p>
+        <p>descriere sau niste spuse ale acestuia</p>
+      </div>
+    
+    <div class="container">
+        <img src="{% static 'sensebkg.jpg' %}" alt="Avatar" style="width:90px">
+        <p><span>Sensei 2</span> centura neagr ceva</p>
+        <p>descriere sau niste spuse ale acestuia</p>
+      </div>
 
-    <div>
-        <h2>Portfolio Section</h2>
-        <img src="{% static 'myapp/img1.png' %}" alt="Image 1">
-        <img src="{% static 'myapp/img2.png' %}" alt="Image 2">
-        <img src="{% static 'myapp/img3.png' %}" alt="Image 3">
-        <img src="{% static 'myapp/img1.png' %}" alt="Image 4">
-        <img src="{% static 'myapp/img2.png' %}" alt="Image 5">
-        <img src="{% static 'myapp/img3.png' %}" alt="Image 6">
+      <style>
+        .PhotoGrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+            gap: 10px; /* Adjust the gap between images */
+        }
+
+        .PhotoGrid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px; /* Add a border radius for rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+        }
+    </style>
+    <div class="PhotoGrid">
+        <img src="{% static 'img1.png' %}" alt="Image 1">
+        <img src="{% static 'img2.png' %}" alt="Image 2">
+        <img src="{% static 'img3.png' %}" alt="Image 3">
+        <img src="{% static 'img1.png' %}" alt="Image 4">
+        <img src="{% static 'img2.png' %}" alt="Image 5">
     </div>
 
     <div>
