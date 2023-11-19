@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <meta name="description" content="Cursuri de Aikido Copii/Adulti. Bucuresti, Sectorul 2.">
+    <meta name="keywords" content="aikido, karate, cursuri, Aikido București, Cursuri Aikido Sectorul 2, Dojo Aikido București, Instruire Aikido Sectorul 2, Arte Marțiale București, Școală Aikido București, Dojo Aikido Sectorul 2, Antrenament Aikido București, Centru Aikido Sectorul 2, Maestru Aikido București, Club Aikido Sectorul 2, Tehnici Aikido București, Învățare Aikido Sectorul 2, Curs Aikido București, Grup Aikido Sectorul 2, Karate București, Cursuri Karate Sectorul 2, Dojo Karate București, Instruire Karate Sectorul 2, Arte Marțiale București, Școală Karate București, Dojo Karate Sectorul 2, Antrenament Karate București, Centru Karate Sectorul 2, Maestru Karate București, Club Karate Sectorul 2, Tehnici Karate București, Învățare Karate Sectorul 2, Curs Karate București, Grup Karate Sectorul 2">
     <style>
         /* Add custom styles here */
         body {
@@ -22,14 +24,16 @@
             color: #fff; /* White text for navigation links */
             padding: 1rem;
             font-family: 'Roboto', sans-serif;
+            border-radius: 5px;
         }
         
         header {
-            background-color: #fff; /* White header background */
+            background-color: #FFF2F2; /* White header background */
             color: #495057; /* Dark gray text color */
             padding: 2rem;
             text-align: center;
             font-family: 'Roboto', sans-serif;
+            border-radius: 10px;
         }
         
         h1, h2, h3 {
@@ -72,9 +76,8 @@
             height: auto;
         }
         
-        .container {
-            border: 2px solid #ccc;
-            background-color: FBF6FF;
+        .container{
+            background-color: #FFF2F2;
             border-radius: 10px;
             padding: 16px;
             margin: 16px 0
@@ -111,17 +114,29 @@
                 display: block;
             }
         }
+        ul {
+            list-style-type: circle;     
+        }
     </style>
+    <script>
+        function showOverlay(imageSrc) {
+            document.getElementById('overlayImage').src = imageSrc;
+            document.querySelector('.overlay').style.display = 'flex';
+        }
+
+        function hideOverlay() {
+            document.querySelector('.overlay').style.display = 'none';
+        }
+    </script>
 </head>
 <body>
 
 <nav>
-    <!-- Your navigation links go here -->
 </nav>
 
 <div>
     <header>
-        <img src="{% static 'kidskarate.jpg' %}" alt="boy">
+        <img src="{% static 'kidskarate.jpg' %}" alt="boy" style = "border-radius: 5px">
     </header>
 
     <div>
@@ -130,8 +145,7 @@
         <p>Definitie aikido</p>
     </div>
 
-    <!-- Senseis or Form Downloads go here -->
-    <h2>Inscriere</h2>
+    <h2>Inscriere:</h2>
     <ul>
         {% for file in files %}
             <li><a href="{% url 'download' file.file.name %}">{{ file.file_name }}</a></li>
@@ -157,23 +171,57 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
             gap: 10px; /* Adjust the gap between images */
-                    }
-        
+            background-color: #FFF2F2; /* Darker gray background for the grid */
+            padding: 20px; /* Add padding to the grid */
+            border-radius: 10px; /* Add border radius for rounded corners */
+        }
+
         .PhotoGrid img {
             width: 100%;
             height: auto;
             border-radius: 8px; /* Add a border radius for rounded corners */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker box shadow for depth */
+            transition: transform 0.2s, filter 0.2s;
+        }
+
+        .PhotoGrid img:hover {
+            filter: brightness(1.2); /* Increase brightness on hover */
+            transform: scale(1.05); /* Scale up on hover */
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 800px; /* Adjust the maximum width as needed */
+            height: 80%;
+            max-height: 600px; /* Adjust the maximum height as needed */
+            background: rgba(220, 220, 220, 0.9); /* Semi-transparent background */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            border-radius: 10px;
+        }
+
+        .overlay img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 8px;
         }
     </style>
     <div class="PhotoGrid">
-        <img src="{% static 'img1.png' %}" alt="Image 1">
-        <img src="{% static 'img2.png' %}" alt="Image 2">
-        <img src="{% static 'img2.png' %}" alt="Image 3">
-        <img src="{% static 'img1.png' %}" alt="Image 4">
-        <img src="{% static 'img2.png' %}" alt="Image 5">
+        <img src="{% static 'img1.png' %}" alt="Image 1" onclick="showOverlay(this.src)">
+        <img src="{% static 'img2.png' %}" alt="Image 2" onclick="showOverlay(this.src)">
+        <img src="{% static 'img2.png' %}" alt="Image 3" onclick="showOverlay(this.src)">
+        <img src="{% static 'img1.png' %}" alt="Image 4" onclick="showOverlay(this.src)">
+        <img src="{% static 'img2.png' %}" alt="Image 5" onclick="showOverlay(this.src)">
     </div>
-
+    <div class="overlay" onclick="hideOverlay()">
+        <img id="overlayImage" alt="Overlay Image">
+    </div>
     <div>
         <h2>Contact</h2>
         <hr>
